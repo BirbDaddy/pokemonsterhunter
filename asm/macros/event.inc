@@ -1946,3 +1946,14 @@
 	setvar VAR_0x8006, \item
 	special CreateEnemyEventMon
 	.endm
+
+	@ Starts the given cutscene which can be skipped if seen before.
+	.macro startcutscene scene:req
+	setvar VAR_0x8004 \scene
+	callnative StartSkippableCutscene
+	.endm
+
+	@ Ends any active cutscene, settings its seen flag.
+	.macro endcutscene
+	callnative EndSkippableCutscene
+	.endm

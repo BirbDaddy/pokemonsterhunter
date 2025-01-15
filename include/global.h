@@ -16,6 +16,8 @@
 #include "constants/easy_chat.h"
 #include "constants/trainer_hill.h"
 
+#include "constants/cutscene.h"
+
 // Prevent cross-jump optimization.
 #define BLOCK_CROSS_JUMP asm("");
 
@@ -531,6 +533,9 @@ struct SaveBlock2
     /*0x57C*/ struct RankingHall2P hallRecords2P[FRONTIER_LVL_MODE_COUNT][HALL_RECORDS_COUNT]; // From record mixing.
     /*0x624*/ u16 contestLinkResults[CONTEST_CATEGORIES_COUNT][CONTESTANT_COUNT];
     /*0x64C*/ struct BattleFrontier frontier;
+#if CUTSCENE_FLAG_TRACKING == FALSE
+              u8 flagCutscenes[ROUND_BITS_TO_BYTES(CUTSCENE_COUNT)];
+#endif
 }; // sizeof=0xF2C
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;
