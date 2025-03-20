@@ -1004,7 +1004,18 @@ static void PrintNameOnCardFront(void)
 {
     u8 buffer[32];
     u8 *txtPtr;
-    txtPtr = StringCopy(buffer, gText_TrainerCardName);
+    u8 gText_LowRankTitle[] = _("Low Rank Trainer: ");
+    u8 gText_HighRankTitle[] = _("High Rank Trainer: ");
+    u8 gText_MasterRankTitle[] = _("Master Rank Trainer: ");
+    // txtPtr = StringCopy(buffer, gText_TrainerCardName);
+    if (FlagGet(FLAG_IS_CHAMPION))
+    {
+        txtPtr = StringCopy(buffer, gText_MasterRankTitle);
+    } else if (FlagGet(FLAG_BADGE03_GET)) {
+        txtPtr = StringCopy(buffer, gText_HighRankTitle);
+    } else {
+        txtPtr = StringCopy(buffer, gText_LowRankTitle);
+    }
     StringCopy(txtPtr, sData->trainerCard.playerName);
     ConvertInternationalString(txtPtr, sData->language);
     if (sData->cardType == CARD_TYPE_FRLG)

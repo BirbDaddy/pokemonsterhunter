@@ -6,34 +6,34 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
 #if P_FAMILY_TREECKO
     [SPECIES_TREECKO] =
     {
-        .baseHP        = 40,
-        .baseAttack    = 45,
-        .baseDefense   = 35,
-        .baseSpeed     = 70,
-        .baseSpAttack  = 65,
-        .baseSpDefense = 55,
-        .types = MON_TYPES(TYPE_GRASS),
+        .baseHP        = 50,
+        .baseAttack    = 50,
+        .baseDefense   = 60,
+        .baseSpeed     = 60,
+        .baseSpAttack  = 50,
+        .baseSpDefense = 30,
+        .types = MON_TYPES(TYPE_NORMAL),
         .catchRate = 45,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 62 : 65,
-        .evYield_Speed = 1,
-        .genderRatio = PERCENT_FEMALE(12.5),
+        .evYield_Defense = 1,
+        .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MONSTER, EGG_GROUP_DRAGON),
-        .abilities = { ABILITY_OVERGROW, ABILITY_NONE, ABILITY_UNBURDEN },
+        .abilities = { ABILITY_CHEEK_POUCH, ABILITY_OWN_TEMPO, ABILITY_UNBURDEN },
         .bodyColor = BODY_COLOR_GREEN,
-        .speciesName = _("Treecko"),
+        .speciesName = _("Jagras"),
         .cryId = CRY_TREECKO,
         .natDexNum = NATIONAL_DEX_TREECKO,
-        .categoryName = _("Wood Gecko"),
+        .categoryName = _("Thief Wyvern"),
         .height = 5,
         .weight = 50,
         .description = COMPOUND_STRING(
-            "It makes its nest in a giant tree in the\n"
-            "forest. It ferociously guards against\n"
-            "anything nearing its territory. It is said\n"
-            "to be the protector of the forest's trees."),
+            "It is characterized by its outer hide and\n"
+            "the large spines on its back, which are\n"
+            "colored in such a way as to provide camouflage\n"
+            "in forests."),
         .pokemonScale = 541,
         .pokemonOffset = 19,
         .trainerScale = 256,
@@ -290,34 +290,34 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
 #if P_FAMILY_TORCHIC
     [SPECIES_TORCHIC] =
     {
-        .baseHP        = 45,
-        .baseAttack    = 60,
-        .baseDefense   = 40,
-        .baseSpeed     = 45,
-        .baseSpAttack  = 70,
-        .baseSpDefense = 50,
-        .types = MON_TYPES(TYPE_FIRE),
+        .baseHP        = 50,
+        .baseAttack    = 80,
+        .baseDefense   = 50,
+        .baseSpeed     = 50,
+        .baseSpAttack  = 40,
+        .baseSpDefense = 30,
+        .types = MON_TYPES(TYPE_NORMAL),
         .catchRate = 45,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 62 : 65,
-        .evYield_SpAttack = 1,
-        .genderRatio = PERCENT_FEMALE(12.5),
+        .evYield_Attack = 1,
+        .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_BLAZE, ABILITY_NONE, ABILITY_SPEED_BOOST },
+        .abilities = { ABILITY_PRANKSTER, ABILITY_PICKUP, ABILITY_SPEED_BOOST },
         .bodyColor = BODY_COLOR_RED,
-        .speciesName = _("Torchic"),
+        .speciesName = _("Jaggi"),
         .cryId = CRY_TORCHIC,
         .natDexNum = NATIONAL_DEX_TORCHIC,
-        .categoryName = _("Chick"),
+        .categoryName = _("Dog Wyvern"),
         .height = 4,
         .weight = 25,
         .description = COMPOUND_STRING(
-            "If attacked, it strikes back by spitting\n"
-            "balls of fire it forms in its stomach.\n"
-            "A Torchic dislikes darkness because it\n"
-            "can't see its surroundings."),
+            "Highly Social, carnivorous bird wyverns\n"
+            "that live in large packs.\n"
+            "Young Jaggi males hunt in groups when\n"
+            "attacking larger animals."),
         .pokemonScale = 566,
         .pokemonOffset = 19,
         .trainerScale = 256,
@@ -614,34 +614,34 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
 #if P_FAMILY_MUDKIP
     [SPECIES_MUDKIP] =
     {
-        .baseHP        = 50,
+        .baseHP        = 40,
         .baseAttack    = 70,
-        .baseDefense   = 50,
-        .baseSpeed     = 40,
-        .baseSpAttack  = 50,
-        .baseSpDefense = 50,
-        .types = MON_TYPES(TYPE_WATER),
+        .baseDefense   = 40,
+        .baseSpeed     = 80,
+        .baseSpAttack  = 30,
+        .baseSpDefense = 40,
+        .types = MON_TYPES(TYPE_NORMAL),
         .catchRate = 45,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 62 : 65,
-        .evYield_Attack = 1,
-        .genderRatio = PERCENT_FEMALE(12.5),
+        .evYield_Speed = 1,
+        .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MONSTER, EGG_GROUP_WATER_1),
-        .abilities = { ABILITY_TORRENT, ABILITY_NONE, ABILITY_DAMP },
+        .abilities = { ABILITY_UNBURDEN, ABILITY_RUN_AWAY, ABILITY_DAMP },
         .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("Mudkip"),
+        .speciesName = _("Velociprey"),
         .cryId = CRY_MUDKIP,
         .natDexNum = NATIONAL_DEX_MUDKIP,
-        .categoryName = _("Mud Fish"),
+        .categoryName = _("Blue Speed Wyvern"),
         .height = 4,
         .weight = 76,
         .description = COMPOUND_STRING(
-            "On land, it can powerfully lift large\n"
-            "boulders by planting its four feet and\n"
-            "heaving. It sleeps by burying itself in soil\n"
-            "at the water's edge."),
+            "Small Bird Wyverns inhabiting the Jungle.\n"
+            "Velociprey are well-known for their yellow\n"
+            "beaks, accenting bodies of black and blue\n"
+            "stripes."),
         .pokemonScale = 535,
         .pokemonOffset = 20,
         .trainerScale = 256,

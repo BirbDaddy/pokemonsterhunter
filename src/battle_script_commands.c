@@ -1148,6 +1148,52 @@ bool32 ProteanTryChangeType(u32 battler, u32 ability, u32 move, u32 moveType)
     return FALSE;
 }
 
+bool32 ElementalShiftChangeWeather(u32 battler, u32 ability, u32 move, u32 moveType)
+{
+    gBattlerAbility = battler;
+    if (ability == ABILITY_FORECAST)
+    {
+        if (gBattleWeather & B_WEATHER_PRIMAL_ANY/* && WEATHER_HAS_EFFECT*/)
+        {
+            gSpecialStatuses[battler].switchInAbilityDone = TRUE;
+            BattleScriptPushCursorAndCallback(BattleScript_BlockedByPrimalWeatherEnd3);
+            return TRUE;
+        }
+        else
+        {
+            if (moveType == TYPE_FIRE)
+            {
+                if (TryChangeBattleWeather(battler, B_WEATHER_SUN, TRUE))
+                {
+                    BattleScriptPushCursorAndCallback(BattleScript_DroughtActivates);
+                    return TRUE;
+                }
+            }
+            if (moveType == TYPE_WATER)
+            {
+                if (TryChangeBattleWeather(battler, B_WEATHER_RAIN, TRUE))
+                {
+                    BattleScriptPushCursorAndCallback(BattleScript_DrizzleActivates);
+                    return TRUE;
+                }
+            }
+            if (moveType == TYPE_ICE)
+            {
+                if (TryChangeBattleWeather(battler, B_WEATHER_HAIL, TRUE))
+                {
+                    BattleScriptPushCursorAndCallback(BattleScript_SnowWarningActivatesHail);
+                    return TRUE;
+                }
+            }
+        }
+    }
+    else
+    {
+        return FALSE;
+    }
+    return FALSE;
+}
+
 bool32 IsMoveNotAllowedInSkyBattles(u32 move)
 {
     return (gBattleStruct->isSkyBattle && IsMoveSkyBattleBanned(gCurrentMove));

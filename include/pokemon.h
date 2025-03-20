@@ -380,7 +380,7 @@ struct SpeciesInfo /*0xC4*/
     u8 safariZoneFleeRate;
 
     // Pokédex data
-    u8 categoryName[13];
+    u8 categoryName[21];
     u8 speciesName[POKEMON_NAME_LENGTH + 1];
     u16 cryId;
     u16 natDexNum;
