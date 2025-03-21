@@ -2661,3 +2661,14 @@
 	compare \a, \b
 	cant_see_if 5
 	.endm
+
+	@ Updates the complex quest's variable to give it its next state.
+	.macro updatequest quest:req, questvar:req
+	addvar \questvar, 1
+	questmenu QUEST_MENU_BUFFER_QUEST_NAME \quest
+	bufferstring 1 gText_QuestUpdate
+	playse SE_PIN
+	msgbox gText_QuestUpdate, MSGBOX_SIGN
+	waitse
+	openquestmenu
+	.endm

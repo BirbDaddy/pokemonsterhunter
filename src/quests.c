@@ -34,6 +34,8 @@
 #include "event_object_movement.h"
 #include "pokemon_icon.h"
 
+#include "complex_quests.h"
+
 #include "random.h"
 
 #define tPageItems      data[4]
@@ -143,6 +145,8 @@ static void PrintQuestLocation(s32 questId);
 static void GenerateQuestFlavorText(s32 questId);
 static void UpdateQuestFlavorText(s32 questId);
 static void PrintQuestFlavorText(s32 questId);
+static const u8 *GetQuestDesc(s32 questId);
+static const u8 *GetQuestLocation(s32 questId);
 
 static bool8 IsQuestUnlocked(s32 questId);
 static bool8 IsQuestActiveState(s32 questId);
@@ -155,6 +159,8 @@ static void DetermineSpriteType(s32 questId);
 static void QuestMenu_CreateSprite(u16 itemId, u8 idx, u8 spriteType);
 static void ResetSpriteState(void);
 static void QuestMenu_DestroySprite(u8 idx);
+static u16 GetSpriteId_Complex(s32 questId);
+static u8 GetSpriteType_Complex(s32 questId);
 
 static void GenerateStateAndPrint(u8 windowId, u32 itemId, u8 y);
 static u8 GenerateSubquestState(u8 questId);
@@ -237,6 +243,7 @@ static const u8 sText_DotSpace[] = _(". ");
 static const u8 sText_Close[] = _("Close");
 static const u8 sText_ColorGreen[] = _("{COLOR}{GREEN}");
 static const u8 sText_AZ[] = _(" A-Z");
+
 
 ///////////////////////////////////////////////////////////////////////////////
 //////////////////////BEGIN SUBQUEST CUSTOMIZATION/////////////////////////////
@@ -2005,7 +2012,7 @@ void GenerateQuestLocation(s32 questId)
 {
 	if (!IsSubquestMode())
 	{
-		StringCopy(gStringVar2, sSideQuests[questId].map);
+		StringCopy(gStringVar2, GetQuestLocation(questId));
 	}
 	else
 	{
@@ -2059,7 +2066,7 @@ void GenerateQuestFlavorText(s32 questId)
 }
 void UpdateQuestFlavorText(s32 questId)
 {
-	StringCopy(gStringVar1, sSideQuests[questId].desc);
+	StringExpandPlaceholders(gStringVar1, GetQuestDesc(questId));
 }
 void PrintQuestFlavorText(s32 questId)
 {
@@ -2140,6 +2147,48 @@ bool8 UNUSED IsQuestUnlocked(s32 questId)
 	}
 }
 
+static const u8 *GetQuestLocation(s32 questId)
+{
+    switch (questId) {
+        case QUEST_1_HEARTS_DIAMONDS:
+            return gTable_HeartQuestMaps[VarGet(VAR_HEARTS_QUEST)];
+        default:
+            return sSideQuests[questId].map;
+    }
+}
+
+static const u8 *GetQuestDesc(s32 questId)
+{
+    switch (questId) {
+        case QUEST_1_HEARTS_DIAMONDS:
+            return gTable_HeartQuestDescs[VarGet(VAR_HEARTS_QUEST)];
+        default:
+            return sSideQuests[questId].desc;
+    }
+}
+
+static u16 GetSpriteId_Complex(s32 questId)
+{
+	switch (questId)
+    {
+		case QUEST_1_HEARTS_DIAMONDS:
+		    return HeartQuestSprites[VarGet(VAR_HEARTS_QUEST)];
+		default:
+		    return sSideQuests[questId].sprite;
+	} 
+}
+
+static u8 GetSpriteType_Complex(s32 questId)
+{
+	switch (questId)
+    {
+		case QUEST_1_HEARTS_DIAMONDS:
+		    return HeartQuestSpriteTypes[VarGet(VAR_HEARTS_QUEST)];
+		default:
+		    return sSideQuests[questId].spritetype;
+	} 
+}
+
 void DetermineSpriteType(s32 questId)
 {
 	u16 spriteId;
@@ -2147,8 +2196,8 @@ void DetermineSpriteType(s32 questId)
 
 	if (IsSubquestMode() == FALSE)
 	{
-		spriteId = sSideQuests[questId].sprite;
-		spriteType = sSideQuests[questId].spritetype;
+		spriteId = GetSpriteId_Complex(questId);
+		spriteType = GetSpriteType_Complex(questId);
 
 		QuestMenu_CreateSprite(spriteId, sStateDataPtr->spriteIconSlot,
 		                       spriteType);
