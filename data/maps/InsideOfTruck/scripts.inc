@@ -48,7 +48,8 @@ InsideOfTruck_EventScript_SetIntroFlagsFemale::
 	end
 
 InsideOfTruck_EventScript_MovingBox::
-	openquestmenu
+	fadescreen FADE_TO_BLACK
+	openevencrafting ECU_DEFAULT
 	end
 
 InsideOfTruck_Text_BoxPrintedWithMonLogo:
