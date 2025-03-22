@@ -60,6 +60,7 @@
 #include "constants/weather.h"
 #include "constants/quests.h"
 #include "constants/even_crafting_constants.h"
+#include "constants/cutscene.h"
 	.include "asm/macros.inc"
 	.include "asm/macros/event.inc"
 	.include "constants/constants.inc"

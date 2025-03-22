@@ -20,6 +20,8 @@
 #include "constants/items.h"
 #include "config/save.h"
 
+#include "constants/cutscene.h"
+
 // Prevent cross-jump optimization.
 #define BLOCK_CROSS_JUMP asm("");
 
@@ -576,7 +578,11 @@ struct SaveBlock2
 
     u8 questData[QUEST_FLAGS_COUNT * QUEST_STATES];
     u8 subQuests[SUB_FLAGS_COUNT];
-}; 
+    
+#if CUTSCENE_FLAG_TRACKING == FALSE
+              u8 flagCutscenes[ROUND_BITS_TO_BYTES(CUTSCENE_COUNT)];
+#endif
+}; // sizeof=0xF2C
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;
 
