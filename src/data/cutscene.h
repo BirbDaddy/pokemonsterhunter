@@ -9,7 +9,7 @@
 
 // extern const u8 EventScript_ExampleCutsceneSkip[];
 
-const struct CutscenesSkips sCutsceneSkipScripts[] =
+const struct CutscenesSkips sCutsceneSkipScripts[20] = 
 {
     // [CUTSCENE_EXAMPLE] =
     // {

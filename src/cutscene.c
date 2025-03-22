@@ -56,7 +56,7 @@ static bool32 TaskHelper_SkippableCutscene_GetSetCutsceneFlagSaveStruct(u32 cuts
 #define tSpriteId data[1]
 void StartSkippableCutscene(struct ScriptContext *ctx)
 {
-    u32 cutscene = gSpecialVar_0x8004;
+    u32 cutscene = gSpecialVar_0x8009;
 
     if (TaskHelper_SkippableCutscene_CheckCutsceneFlag(cutscene))
     {
@@ -135,7 +135,7 @@ static bool32 TaskHelper_SkippableCutscene_GetSetCutsceneFlagSaveStruct(u32 cuts
     u32 index, bit, mask;
     s32 retVal = 0;
 
-#if CUTSCENE_FLAG_TRACKING == FALSE
+    #if CUTSCENE_FLAG_TRACKING == FALSE
     if (cutscene >= CUTSCENE_COUNT)
         return retVal;
 
@@ -147,7 +147,7 @@ static bool32 TaskHelper_SkippableCutscene_GetSetCutsceneFlagSaveStruct(u32 cuts
         gSaveBlock2Ptr->flagCutscenes[index] |= mask;
     else
         retVal = ((gSaveBlock2Ptr->flagCutscenes[index] & mask) != 0);
-#endif
+    #endif
 
     return retVal;
 }
