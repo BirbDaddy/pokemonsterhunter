@@ -9482,14 +9482,14 @@ static inline u32 CalcMoveBasePowerAfterModifiers(struct DamageCalculationData *
         break;
     case ABILITY_SHARPNESS:
         if (IsSlicingMove(move))
-           modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
+           modifier = uq4_12_multiply(modifier, UQ_4_12(1.2));
         break;
     case ABILITY_SUPREME_OVERLORD:
         modifier = uq4_12_multiply(modifier, GetSupremeOverlordModifier(battlerAtk));
         break;
     case ABILITY_KICKBOXER:
         if (IsKickingMove(move))
-            modifier = uq4_12_multiply(modifier,UQ_4_12(1.5));
+            modifier = uq4_12_multiply(modifier,UQ_4_12(1.2));
         break;
     }
 
