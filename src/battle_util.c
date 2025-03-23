@@ -9487,6 +9487,10 @@ static inline u32 CalcMoveBasePowerAfterModifiers(struct DamageCalculationData *
     case ABILITY_SUPREME_OVERLORD:
         modifier = uq4_12_multiply(modifier, GetSupremeOverlordModifier(battlerAtk));
         break;
+    case ABILITY_KICKBOXER:
+        if (IsKickingMove(move))
+            modifier = uq4_12_multiply(modifier,UQ_4_12(1.5));
+        break;
     }
 
     // field abilities

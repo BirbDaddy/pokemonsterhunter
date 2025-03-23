@@ -2408,4 +2408,11 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
         .cantBeSwapped = TRUE,
         .cantBeTraced = TRUE,
     },
+
+    [ABILITY_KICKBOXER] =
+    {
+        .name = _("Kickboxer"),
+        .description = COMPOUND_STRING("Strengthens kicking moves."),
+        .aiRating = 7,
+    },
 };
