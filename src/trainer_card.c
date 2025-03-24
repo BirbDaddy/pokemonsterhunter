@@ -1004,6 +1004,7 @@ static void PrintNameOnCardFront(void)
 {
     u8 buffer[32];
     u8 *txtPtr;
+    u8 gText_VillagerTitle[] = _("Villager: ");
     u8 gText_LowRankTitle[] = _("Low Rank Trainer: ");
     u8 gText_HighRankTitle[] = _("High Rank Trainer: ");
     u8 gText_MasterRankTitle[] = _("Master Rank Trainer: ");
@@ -1013,6 +1014,8 @@ static void PrintNameOnCardFront(void)
         txtPtr = StringCopy(buffer, gText_MasterRankTitle);
     } else if (FlagGet(FLAG_BADGE03_GET)) {
         txtPtr = StringCopy(buffer, gText_HighRankTitle);
+    } else if (!FlagGet(FLAG_RESCUED_BIRCH)) {
+        txtPtr = StringCopy(buffer, gText_VillagerTitle);
     } else {
         txtPtr = StringCopy(buffer, gText_LowRankTitle);
     }
