@@ -769,7 +769,7 @@ static void Task_DisplayMainMenu(u8 taskId)
         palette = RGB_BLACK;
         LoadPalette(&palette, BG_PLTT_ID(15) + 14, PLTT_SIZEOF(1));
 
-        palette = RGB_WHITE;
+        palette = RGB_PARCHMENT;
         LoadPalette(&palette, BG_PLTT_ID(15) + 10, PLTT_SIZEOF(1));
 
         palette = RGB(12, 12, 12);
