@@ -2028,6 +2028,25 @@
     call_if_eq VAR_RESULT, FALSE, \dest
     .endm
 
+	@ Sets a flag in the TM savedata
+	.macro settmflag tmflag:req
+	.byte SCR_OP_TMSETFLAG
+	.byte \tmflag
+	.endm
+
+	@ Stores whether the TM flags has been set in comparisonResult to be used by goto_if, etc
+	.macro checktmflagset tmflag:req
+	.byte SCR_OP_TMCHECKFLAGSET
+	.byte \tmflag
+	.endm
+
+	@ stores whether the tm has been mastered in comparisonResult to be used by goto_if, etc
+	.macro checktmmastered tmindex:req
+	.byte SCR_OP_TMMASTERED
+	.byte \tmindex
+	.endm
+
+
 @ Supplementary
 
 	.macro goto_if_unset flag:req, dest:req
@@ -2153,6 +2172,46 @@
 
 	.macro call_if_not_defeated trainer:req, dest:req
 	checktrainerflag \trainer
+	call_if FALSE, \dest
+	.endm
+
+	.macro goto_if_tmflagset tmflagindex:req, dest:req
+	checktmflagset \tmflagindex
+	goto_if TRUE, \dest
+	.endm
+
+	.macro goto_if_not_tmflagset tmflagindex:req, dest:req
+	checktmflagset \tmflagindex
+	goto_if FALSE, \dest
+	.endm
+
+	.macro call_if_tmflagset tmflagindex:req, dest:req
+	checktmflagset \tmflagindex
+	call_if TRUE, \dest
+	.endm
+
+	.macro call_if_not_tmflagset tmflagindex:req, dest:req
+	checktmflagset \tmflagindex
+	call_if FALSE, \dest
+	.endm
+
+	.macro goto_if_tmmastered tmindex:req, dest:req
+	checktmmastered \tmindex
+	goto_if TRUE, \dest
+	.endm
+
+	.macro goto_if_not_tmmastered tmindex:req, dest:req
+	checktmmastered \tmindex
+	goto_if FALSE, \dest
+	.endm
+
+	.macro call_if_tmmastered tmindex:req, dest:req
+	checktmmastered \tmindex
+	call_if TRUE, \dest
+	.endm
+
+	.macro call_if_not_tmmastered tmindex:req, dest:req
+	checktmmastered \tmindex
 	call_if FALSE, \dest
 	.endm
 

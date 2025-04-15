@@ -16,6 +16,7 @@
 #include "constants/maps.h"
 #include "constants/pokemon.h"
 #include "constants/easy_chat.h"
+#include "constants/technique_manual.h"
 #include "constants/trainer_hill.h"
 #include "constants/items.h"
 #include "config/save.h"
@@ -193,6 +194,13 @@ struct UCoords32
     u32 y;
 };
 
+struct TechniqueManualRecords
+{
+    u16 species[TM_SPECIES_COUNT];
+    u8 counters[TM_COUNTERS_COUNT];
+    u8 flags[1 + (TM_FLAGS_COUNT / 8)];
+};
+
 struct Time
 {
     /*0x00*/ s16 days;
@@ -206,6 +214,7 @@ struct Time
 
 struct SaveBlock3
 {
+    struct TechniqueManualRecords techniqueManual;
 #if OW_USE_FAKE_RTC
     struct Time fakeRTC;
 #endif

@@ -14099,4 +14099,22 @@ const struct Item gItemsInfo[] =
         .iconPic = gItemIcon_PokeshiDoll,
         .iconPalette = gItemIconPalette_PokeshiDoll,
     },
+
+// Novel items
+
+    [ITEM_TECHNIQUE_MANUAL] =
+    {
+        .name = _("Technique Manual"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "A manual for\n"
+            "recording move\n"
+            "information."),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_TechniqueManual,
+        .iconPic = gItemIcon_TownMap,
+        .iconPalette = gItemIconPalette_TownMap,
+    },
 };
