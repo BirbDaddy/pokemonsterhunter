@@ -1078,6 +1078,7 @@ SECTIONS {
         sound/songs/midi/mus_contest_results.o(.rodata);
         sound/songs/midi/mus_hall_of_fame_room.o(.rodata);
         sound/songs/midi/mus_trick_house.o(.rodata);
+		sound/songs/midi/mus_new_game.o(.rodata);
         sound/songs/midi/mus_encounter_twins.o(.rodata);
         sound/songs/midi/mus_encounter_elite_four.o(.rodata);
         sound/songs/midi/mus_encounter_hiker.o(.rodata);
