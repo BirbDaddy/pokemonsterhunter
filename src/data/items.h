@@ -14102,14 +14102,14 @@ const struct Item gItemsInfo[] =
 
 // Novel items
 
-    [ITEM_TECHNIQUE_MANUAL] =
+    [ITEM_TECHNIQUE_NOTES] =
     {
-        .name = _("Technique Manual"),
+        .name = _("Technique Notes"),
         .price = 0,
         .description = COMPOUND_STRING(
-            "A manual for\n"
-            "recording move\n"
-            "information."),
+            "Notes with info\n"
+            "about various\n"
+            "monster moves."),
         .importance = 1,
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,

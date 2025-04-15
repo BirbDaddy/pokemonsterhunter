@@ -174,7 +174,7 @@ else
     ROMTESTHYDRA := $(TOOLS_DIR)/mgba-rom-test-hydra/mgba-rom-test-hydra$(EXE)
 endif
 
-FAMICONV := superfamiconv$(EXE)
+FAMICONV := $(TOOLS_DIR)/superfamiconv/superfamiconv$(EXE)
 PERL := perl
 SHA1 := $(shell { command -v sha1sum || command -v shasum; } 2>/dev/null) -c
 
