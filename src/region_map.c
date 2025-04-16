@@ -19,6 +19,7 @@
 #include "field_effect.h"
 #include "field_specials.h"
 #include "fldeff.h"
+#include "qol_field_moves.h" // qol_field_moves
 #include "region_map.h"
 #include "constants/region_map_sections.h"
 #include "heal_location.h"
@@ -2003,12 +2004,20 @@ static void CB_ExitFlyMap(void)
                 struct RegionMap* tempRegionMap = &sFlyMap->regionMap;
 
                 SetFlyDestination(tempRegionMap);
-                ReturnToFieldFromFlyMapSelect();
+                if (IsFlyToolUsed())
+                    ReturnToFieldFromFlyToolMapSelect();
+                else
+                    ReturnToFieldFromFlyMapSelect();
+            }
+            else if (IsFlyToolUsed())
+            {
+                ReturnToFieldOrBagFromFlyTool();
             }
             else
             {
                 SetMainCallback2(CB2_ReturnToPartyMenuFromFlyMap);
             }
+            ResetFlyTool();
             TRY_FREE_AND_SET_NULL(sFlyMap);
             FreeAllWindowBuffers();
         }

@@ -107,4 +107,13 @@ void GetNumMovesSelectedMonHas(void);
 void MoveDeleterChooseMoveToForget(void);
 void CB2_ChooseMonToTeachFromTechniqueManual(void);
 
+u8 CanTeachMove(struct Pokemon *, u16);
+
+enum {
+    CAN_LEARN_MOVE,
+    CANNOT_LEARN_MOVE,
+    ALREADY_KNOWS_MOVE,
+    CANNOT_LEARN_MOVE_IS_EGG
+};
+
 #endif // GUARD_PARTY_MENU_H

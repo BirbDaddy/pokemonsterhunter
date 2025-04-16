@@ -14117,4 +14117,134 @@ const struct Item gItemsInfo[] =
         .iconPic = gItemIcon_TownMap,
         .iconPalette = gItemIconPalette_TownMap,
     },
+
+    [ITEM_CUT_TOOL]
+    {
+        .name = _("CutTool"),
+        .price = 0,
+        .importance = 1,
+        .description = COMPOUND_STRING("Unused"),
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CutTool,
+        .iconPic = gItemIcon_QuestionMark,
+        .iconPalette = gItemIconPalette_QuestionMark,
+    },
+
+    [ITEM_FLY_TOOL]
+    {
+        .name = _("FlyTool"),
+        .price = 0,
+        .importance = 1,
+        .description = COMPOUND_STRING("Unused"),
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_FlyTool,
+        .iconPic = gItemIcon_QuestionMark,
+        .iconPalette = gItemIconPalette_QuestionMark,
+    },
+
+    [ITEM_SURF_TOOL]
+    {
+        .name = _("SurfTool"),
+        .price = 0,
+        .importance = 1,
+        .description = COMPOUND_STRING("Unused"),
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_SurfTool,
+        .iconPic = gItemIcon_QuestionMark,
+        .iconPalette = gItemIconPalette_QuestionMark,
+    },
+
+    [ITEM_STRENGTH_TOOL]
+    {
+        .name = _("StrengthTool"),
+        .price = 0,
+        .importance = 1,
+        .description = COMPOUND_STRING("Unused"),
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_StrengthTool,
+        .iconPic = gItemIcon_QuestionMark,
+        .iconPalette = gItemIconPalette_QuestionMark,
+    },
+    
+    [ITEM_FLASH_TOOL]
+    {
+        .name = _("FlashTool"),
+        .price = 0,
+        .importance = 1,
+        .description = COMPOUND_STRING("Unused"),
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_FlashTool,
+        .iconPic = gItemIcon_QuestionMark,
+        .iconPalette = gItemIconPalette_QuestionMark,
+    },
+
+    [ITEM_ROCKSMASH_TOOL]
+    {
+        .name = _("RocksmashTool"),
+        .price = 0,
+        .importance = 1,
+        .description = COMPOUND_STRING("Unused"),
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_RockSmashTool,
+        .iconPic = gItemIcon_QuestionMark,
+        .iconPalette = gItemIconPalette_QuestionMark,
+    },
+
+    [ITEM_WATERFALL_TOOL]
+    {
+        .name = _("WaterfallTool"),
+        .price = 0,
+        .importance = 1,
+        .description = COMPOUND_STRING("Unused"),
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_WaterfallTool,
+        .iconPic = gItemIcon_QuestionMark,
+        .iconPalette = gItemIconPalette_QuestionMark,
+    },
+
+    [ITEM_DIVE_TOOL]
+    {
+        .name = _("DiveTool"),
+        .price = 0,
+        .importance = 1,
+        .description = COMPOUND_STRING("Unused"),
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_DiveTool,
+        .iconPic = gItemIcon_QuestionMark,
+        .iconPalette = gItemIconPalette_QuestionMark,
+    },
+
+    [ITEM_TELEPORT_TOOL]
+    {
+        .name = _("TeleportTool"),
+        .price = 0,
+        .importance = 1,
+        .description = COMPOUND_STRING("Unused"),
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_TeleportTool,
+        .iconPic = gItemIcon_QuestionMark,
+        .iconPalette = gItemIconPalette_QuestionMark,
+    },
+
+    [ITEM_SWEETSCENT_TOOL]
+    {
+        .name = _("SweetTool"),
+        .price = 0,
+        .importance = 1,
+        .description = COMPOUND_STRING("Unused"),
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_SweetScentTool,
+        .iconPic = gItemIcon_QuestionMark,
+        .iconPalette = gItemIconPalette_QuestionMark,
+    },
 };

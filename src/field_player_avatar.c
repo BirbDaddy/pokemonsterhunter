@@ -13,6 +13,7 @@
 #include "metatile_behavior.h"
 #include "overworld.h"
 #include "party_menu.h"
+#include "qol_field_moves.h" // qol_field_moves
 #include "random.h"
 #include "rotating_gate.h"
 #include "script.h"
@@ -76,7 +77,6 @@ static u8 CheckForPlayerAvatarStaticCollision(u8);
 static u8 CheckForObjectEventStaticCollision(struct ObjectEvent *, s16, s16, u8, u8);
 static bool8 CanStopSurfing(s16, s16, u8);
 static bool8 ShouldJumpLedge(s16, s16, u8);
-static bool8 TryPushBoulder(s16, s16, u8);
 static void CheckAcroBikeCollision(s16, s16, u8, u8 *);
 
 static void DoPlayerAvatarTransition(void);
@@ -84,7 +84,6 @@ static void PlayerAvatarTransition_Dummy(struct ObjectEvent *);
 static void PlayerAvatarTransition_Normal(struct ObjectEvent *);
 static void PlayerAvatarTransition_MachBike(struct ObjectEvent *);
 static void PlayerAvatarTransition_AcroBike(struct ObjectEvent *);
-static void PlayerAvatarTransition_Surfing(struct ObjectEvent *);
 static void PlayerAvatarTransition_Underwater(struct ObjectEvent *);
 static void PlayerAvatarTransition_ReturnToField(struct ObjectEvent *);
 
@@ -462,6 +461,7 @@ static bool8 DoForcedMovement(u8 direction, void (*moveFunc)(u8))
 {
     struct PlayerAvatar *playerAvatar = &gPlayerAvatar;
     u8 collision;
+    u32 fieldMoveStatus; // qol_field_moves
 
     // Check for sideways stairs onto ice movement.
     switch (direction)
@@ -479,6 +479,11 @@ static bool8 DoForcedMovement(u8 direction, void (*moveFunc)(u8))
     collision = CheckForPlayerAvatarCollision(direction);
 
     playerAvatar->flags |= PLAYER_AVATAR_FLAG_FORCED_MOVE;
+
+    fieldMoveStatus = CanUseWaterfall(direction);
+    if (fieldMoveStatus)
+        return UseWaterfall(gPlayerAvatar, fieldMoveStatus);
+
     if (collision)
     {
         ForcedMovement_None();
@@ -736,15 +741,33 @@ static u8 CheckForPlayerAvatarStaticCollision(u8 direction)
 u8 CheckForObjectEventCollision(struct ObjectEvent *objectEvent, s16 x, s16 y, u8 direction, u8 metatileBehavior)
 {
     u8 collision = GetCollisionAtCoords(objectEvent, x, y, direction);
+    u32 fieldMoveStatus; // qol_field_moves
 
     if (collision == COLLISION_ELEVATION_MISMATCH && CanStopSurfing(x, y, direction))
         return COLLISION_STOP_SURFING;
+
+    fieldMoveStatus = CanUseSurf(x,y,collision);
+    if (fieldMoveStatus != FIELD_MOVE_FAIL)
+        return UseSurf(fieldMoveStatus);
+
+    fieldMoveStatus = CanUseCut(x,y);
+    if (fieldMoveStatus != FIELD_MOVE_FAIL)
+        return UseCut(fieldMoveStatus);
+
+    fieldMoveStatus = CanUseRockSmash(x,y);
+    if (fieldMoveStatus != FIELD_MOVE_FAIL)
+        return UseRockSmash(fieldMoveStatus);
 
     if (ShouldJumpLedge(x, y, direction))
     {
         IncrementGameStat(GAME_STAT_JUMPED_DOWN_LEDGES);
         return COLLISION_LEDGE_JUMP;
     }
+
+    fieldMoveStatus = CanUseStrength(collision);
+    if (fieldMoveStatus)
+        return UseStrength(fieldMoveStatus,x,y,direction);
+
     if (collision == COLLISION_OBJECT_EVENT && TryPushBoulder(x, y, direction))
         return COLLISION_PUSHED_BOULDER;
 
@@ -794,7 +817,7 @@ static bool8 ShouldJumpLedge(s16 x, s16 y, u8 direction)
         return FALSE;
 }
 
-static bool8 TryPushBoulder(s16 x, s16 y, u8 direction)
+bool8 TryPushBoulder(s16 x, s16 y, u8 direction)
 {
     if (FlagGet(FLAG_SYS_USE_STRENGTH))
     {
@@ -915,7 +938,7 @@ static void PlayerAvatarTransition_AcroBike(struct ObjectEvent *objEvent)
     Bike_HandleBumpySlopeJump();
 }
 
-static void PlayerAvatarTransition_Surfing(struct ObjectEvent *objEvent)
+void PlayerAvatarTransition_Surfing(struct ObjectEvent *objEvent)
 {
     u8 spriteId;
 
@@ -1103,8 +1126,13 @@ void PlayerFreeze(void)
     if (gPlayerAvatar.tileTransitionState == T_TILE_CENTER || gPlayerAvatar.tileTransitionState == T_NOT_MOVING)
     {
         if (IsPlayerNotUsingAcroBikeOnBumpySlope())
-            PlayerForceSetHeldMovement(GetFaceDirectionMovementAction(gObjectEvents[gPlayerAvatar.objectEventId].facingDirection));
+            ForcePlayerToPerformMovementAction(); //qol_field_moves
     }
+}
+
+void ForcePlayerToPerformMovementAction(void)
+{
+    PlayerForceSetHeldMovement(GetFaceDirectionMovementAction(gObjectEvents[gPlayerAvatar.objectEventId].facingDirection));
 }
 
 // wheelie idle

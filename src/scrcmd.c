@@ -35,6 +35,7 @@
 #include "party_menu.h"
 #include "pokedex.h"
 #include "pokemon_storage_system.h"
+#include "qol_field_moves.h"
 #include "random.h"
 #include "overworld.h"
 #include "rotating_tile_puzzle.h"
@@ -3003,6 +3004,15 @@ bool8 ScrCmd_warpwhitefade(struct ScriptContext *ctx)
     DoWhiteFadeWarp();
     ResetInitialPlayerAvatarState();
     return TRUE;
+}
+
+bool8 ScrCmd_checkpartylearnknowsfieldmove(struct ScriptContext *ctx)
+{
+    u16 machine = ScriptReadHalfword(ctx);
+
+    PartyHasMonLearnsKnowsFieldMove(machine);
+
+    return FALSE;
 }
 
 bool8 ScrCmd_tmsetflag(struct ScriptContext *ctx)
