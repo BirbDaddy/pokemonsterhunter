@@ -30,10 +30,10 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .height = 5,
         .weight = 50,
         .description = COMPOUND_STRING(
-            "It is characterized by its outer hide and\n"
-            "the large spines on its back, which are\n"
-            "colored in such a way as to provide camouflage\n"
-            "in forests."),
+            "It is characterized by its outer hide\n"
+            "and the large spines on its back, which\n"
+            "are colored in such a way as to provide\n"
+            "camouflage in forests."),
         .pokemonScale = 541,
         .pokemonOffset = 19,
         .trainerScale = 256,

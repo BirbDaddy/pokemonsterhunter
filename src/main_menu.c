@@ -895,6 +895,15 @@ static void Task_HighlightSelectedMainMenuItem(u8 taskId)
     gTasks[taskId].func = Task_HandleMainMenuInput;
 }
 
+static void Task_WaitForNewGameMusic(u8 taskId)
+{
+    if (!IsBGMPlaying())
+    {
+        BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 0x10, RGB_BLACK);
+        gTasks[taskId].func = Task_HandleMainMenuAPressed;
+    }
+}
+
 static bool8 HandleMainMenuInput(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
@@ -903,8 +912,9 @@ static bool8 HandleMainMenuInput(u8 taskId)
     {
         PlaySE(SE_SELECT);
         IsWirelessAdapterConnected();   // why bother calling this here? debug? Task_HandleMainMenuAPressed will check too
-        BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 0x10, RGB_BLACK);
-        gTasks[taskId].func = Task_HandleMainMenuAPressed;
+        if (tCurrItem == ACTION_NEW_GAME)
+            PlayBGM(MUS_NEW_GAME);
+        gTasks[taskId].func = Task_WaitForNewGameMusic;
     }
     else if (JOY_NEW(B_BUTTON))
     {
@@ -1071,7 +1081,6 @@ static void Task_HandleMainMenuAPressed(u8 taskId)
         {
             case ACTION_NEW_GAME:
             default:
-                PlayBGM(MUS_NEW_GAME);
                 gPlttBufferUnfaded[0] = RGB_BLACK;
                 gPlttBufferFaded[0] = RGB_BLACK;
                 gTasks[taskId].func = Task_NewGameBirchSpeech_Init;
