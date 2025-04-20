@@ -17,8 +17,10 @@
 #include "constants/items.h"
 #include "event_scripts.h"
 #include "field_effect.h"
+#include "constants/moves.h"
 #include "party_menu.h"
 #include "constants/vars.h"
+#include "pokemon.h"
 #include "constants/flags.h"
 #include "event_data.h"
 #include "qol_field_moves.h"
@@ -94,7 +96,7 @@ static void LockPlayerAndLoadMon(void)
 // Cut
 u32 CanUseCut(s16 x, s16 y)
 {
-    bool32 monHasMove = PartyHasMonLearnsKnowsFieldMove(ITEM_HM01);
+    bool32 monHasMove = PartyHasMonLearnsKnowsFieldMove(MOVE_CUT);
     bool32 bagHasItem = CheckBagHasItem(ITEM_CUT_TOOL,1);
     bool32 playerHasBadge = FlagGet(FLAG_BADGE01_GET);
 
@@ -178,7 +180,7 @@ void ResetFlyTool(void)
 // Surf
 u32 CanUseSurf(s16 x, s16 y, u8 collision)
 {
-    bool32 monHasMove = PartyHasMonLearnsKnowsFieldMove(ITEM_HM03);
+    bool32 monHasMove = PartyHasMonLearnsKnowsFieldMove(MOVE_SURF);
     bool32 bagHasItem = CheckBagHasItem(ITEM_SURF_TOOL,1);
     bool32 playerHasBadge = FlagGet(FLAG_BADGE05_GET);
     bool32 collisionHasMismatch = (collision == COLLISION_ELEVATION_MISMATCH);
@@ -273,7 +275,7 @@ void RemoveRelevantSurfFieldEffect(void)
 
 u32 CanUseStrength(u8 collision)
 {
-    bool32 monHasMove = PartyHasMonLearnsKnowsFieldMove(ITEM_HM04);
+    bool32 monHasMove = PartyHasMonLearnsKnowsFieldMove(MOVE_STRENGTH);
     bool32 bagHasItem = CheckBagHasItem(ITEM_STRENGTH_TOOL,1);
     bool32 playerHasBadge = FlagGet(FLAG_BADGE04_GET);
     bool32 playerUsedStrength = FlagGet(FLAG_SYS_USE_STRENGTH);
@@ -348,7 +350,7 @@ static void FieldCallback_UseFlashTool(void)
 static void FieldCallback_UseFlashMove(void)
 {
     u8 taskId = CreateFieldMoveTask();
-    PartyHasMonLearnsKnowsFieldMove(ITEM_HM05);
+    PartyHasMonLearnsKnowsFieldMove(MOVE_FLASH);
     gFieldEffectArguments[0] = gSpecialVar_Result;
 
     gTasks[taskId].data[8] = (uintptr_t)FldEff_UseFlash >> 16;
@@ -368,7 +370,7 @@ u32 CanUseFlash(void)
     bool32 playerIsInCave = (gMapHeader.cave == TRUE);
     bool32 mapIsNotLit = (GetFlashLevel() == (gMaxFlashLevel - 1));
     bool32 playerHasUsedFlash = FlagGet(FLAG_SYS_USE_FLASH);
-    bool32 monHasMove = PartyHasMonLearnsKnowsFieldMove(ITEM_HM05);
+    bool32 monHasMove = PartyHasMonLearnsKnowsFieldMove(MOVE_FLASH);
     bool32 playerHasBadge = FlagGet(FLAG_BADGE02_GET);
     bool32 bagHasItem = CheckBagHasItem(ITEM_FLASH_TOOL,1);
 
@@ -402,7 +404,7 @@ void TryUseFlash(void)
 
 u32 CanUseRockSmash(s16 x, s16 y)
 {
-    bool32 monHasMove = PartyHasMonLearnsKnowsFieldMove(ITEM_HM06);
+    bool32 monHasMove = PartyHasMonLearnsKnowsFieldMove(MOVE_ROCK_SMASH);
     bool32 bagHasItem = CheckBagHasItem(ITEM_ROCKSMASH_TOOL,1);
     bool32 playerHasBadge = FlagGet(FLAG_BADGE03_GET);
 
@@ -461,7 +463,7 @@ bool8 IsPlayerFacingWaterfall(void)
 
 u32 CanUseWaterfall(u8 direction)
 {
-    bool32 monHasMove = PartyHasMonLearnsKnowsFieldMove(ITEM_HM07);
+    bool32 monHasMove = PartyHasMonLearnsKnowsFieldMove(MOVE_WATERFALL);
     bool32 bagHasItem = CheckBagHasItem(ITEM_WATERFALL_TOOL,1);
     bool32 playerHasBadge = FlagGet(FLAG_BADGE08_GET);
     bool32 isPlayerPushedSouth = (direction == DIR_SOUTH);
@@ -562,7 +564,7 @@ void RemoveRelevantWaterfallFieldEffect(void)
 
 u32 CanUseDiveDown(void)
 {
-    bool32 monHasMove = PartyHasMonLearnsKnowsFieldMove(ITEM_HM08);
+    bool32 monHasMove = PartyHasMonLearnsKnowsFieldMove(MOVE_DIVE);
     bool32 bagHasItem = CheckBagHasItem(ITEM_DIVE_TOOL,1);
     bool32 playerHasBadge = FlagGet(FLAG_BADGE07_GET);
     bool32 diveWarpSuccessful = (TrySetDiveWarp() == 2);
@@ -581,7 +583,7 @@ u32 CanUseDiveDown(void)
 
 u32 CanUseDiveEmerge(void)
 {
-    bool32 monHasMove = PartyHasMonLearnsKnowsFieldMove(ITEM_HM08);
+    bool32 monHasMove = PartyHasMonLearnsKnowsFieldMove(MOVE_DIVE);
     bool32 bagHasItem = CheckBagHasItem(ITEM_DIVE_TOOL,1);
     bool32 playerHasBadge = FlagGet(FLAG_BADGE07_GET);
     bool32 diveWarpSuccessful = (TrySetDiveWarp() == 1);
@@ -666,47 +668,45 @@ void ClearFieldMoveFlags(void)
     FlagClear(FLAG_SYS_USE_WATERFALL);
 }
 
-static bool32 PartyCanLearnMoveLevelUp(u16 species, u16 moveId)
+static bool32 PartyCanLearnMoveLevelUp(u16 species, u16 move)
 {
-    u32 i = 0;
     const struct LevelUpMove *learnset = GetSpeciesLevelUpLearnset(species);
+    u32 i = 0;
+
     for (i = 0; learnset[i].move != LEVEL_UP_MOVE_END; i++)
     {
-        if ((learnset[i].move & LEVEL_UP_MOVE_ID) == moveId)
+        if (learnset[i].move == move)
             return TRUE;
     }
     return FALSE;
 }
 
-bool32 PartyHasMonLearnsKnowsFieldMove(u16 itemId)
+bool32 PartyHasMonLearnsKnowsFieldMove(u16 move)
 {
     struct Pokemon *mon;
-    u32 species, i, monCanLearnTM, monCanLearnTutor;
-    u16 moveId = ItemIdToBattleMoveId(itemId);
+    u32 species, i, monCanLearn;
     gSpecialVar_Result = PARTY_SIZE;
     gSpecialVar_0x8004 = 0;
 
     for (i = 0; i < PARTY_SIZE; i++)
     {
         mon = &gPlayerParty[i];
-        species = GetMonData(mon,MON_DATA_SPECIES,NULL);
+        species = GetMonData(mon, MON_DATA_SPECIES, NULL);
 
         if (species == SPECIES_NONE)
             break;
 
-        monCanLearnTM = CanTeachMove(mon,moveId);
-        if ((PartyCanLearnMoveLevelUp(species, moveId)
-                || (monCanLearnTM) == ALREADY_KNOWS_MOVE)
-                || (monCanLearnTM) == CAN_LEARN_MOVE)
-            return SetMonResultVariables(i,species);
+        monCanLearn = CanTeachMove(mon, move);
 
-        /*for (i = 0; i < TUTOR_MOVE_COUNT; i++)
-        {*/
-            monCanLearnTutor = CanTeachMove(mon, 0);
-            if (monCanLearnTutor == ALREADY_KNOWS_MOVE || monCanLearnTutor == CAN_LEARN_MOVE)
-                return SetMonResultVariables(i,species);
-        //}
+        if (monCanLearn == ALREADY_KNOWS_MOVE)
+            return SetMonResultVariables(i, species);
+
+        if (PartyCanLearnMoveLevelUp(species, move) || monCanLearn == CAN_LEARN_MOVE)
+        {
+            return SetMonResultVariables(i, species);
+        }
     }
+
     return FALSE;
 }
 

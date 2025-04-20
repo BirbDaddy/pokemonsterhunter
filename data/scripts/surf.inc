@@ -1,7 +1,7 @@
 EventScript_UseSurf::
 	checkitem ITEM_SURF_TOOL, 1
     goto_if_eq VAR_RESULT, TRUE, EventScript_UseSurfTool
-    checkpartylearnknowsfieldmove ITEM_HM03
+    checkpartylearnknowsfieldmove MOVE_SURF
 	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_EndUseSurf
 	bufferpartymonnick STR_VAR_1, VAR_RESULT
 	setfieldeffectargument 0, VAR_RESULT

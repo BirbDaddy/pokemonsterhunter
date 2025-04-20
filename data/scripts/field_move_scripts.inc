@@ -1,10 +1,13 @@
 @ Interact with cuttable tree
 EventScript_CutTree::
 	lockall
-	checkitem ITEM_CUT_TOOL, 1
+	@ Start qol_field_moves
+	//checkpartymove MOVE_CUT
+    checkitem ITEM_CUT_TOOL, 1
     goto_if_eq VAR_RESULT, TRUE, EventScript_UseCutTool
-    checkpartylearnknowsfieldmove ITEM_HM01
+    checkpartylearnknowsfieldmove MOVE_CUT
 	goto_if_unset FLAG_BADGE01_GET, EventScript_CheckTreeCantCut
+	@ End qol_field_moves
 	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CheckTreeCantCut
 	setfieldeffectargument 0, VAR_RESULT
 	bufferpartymonnick STR_VAR_1, VAR_RESULT
@@ -19,9 +22,9 @@ EventScript_CutTreeCommon:
 	dofieldeffect FLDEFF_USE_CUT_ON_TREE
 	waitstate
 EventScript_CutTreeDown:: @ fallthrough
+	setflag FLAG_SYS_USE_CUT @ qol_field_moves
 	setflag FLAG_SAFE_FOLLOWER_MOVEMENT
 	call_if_eq VAR_0x8004, TRUE, EventScript_FollowerFieldMove
-	setflag FLAG_SYS_USE_CUT @ qol_field_moves
 	applymovement VAR_LAST_TALKED, Movement_CutTreeDown
 	waitmovement 0
 	removeobject VAR_LAST_TALKED
@@ -69,7 +72,7 @@ EventScript_RockSmash::
 	lockall
 	checkitem ITEM_ROCKSMASH_TOOL,1
     goto_if_eq VAR_RESULT, TRUE, EventScript_UseRockSmashTool
-    checkpartylearnknowsfieldmove ITEM_HM06
+    checkpartylearnknowsfieldmove MOVE_ROCK_SMASH
 	goto_if_unset FLAG_BADGE03_GET, EventScript_CantSmashRock
 	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantSmashRock
 	setfieldeffectargument 0, VAR_RESULT
@@ -235,7 +238,7 @@ EventScript_StrengthBoulder::
 	goto_if_set FLAG_SYS_USE_STRENGTH, EventScript_CheckActivatedBoulder
 	checkitem ITEM_STRENGTH_TOOL,1
     goto_if_eq VAR_RESULT, TRUE, EventScript_UseStrengthTool
-    checkpartylearnknowsfieldmove ITEM_HM04
+    checkpartylearnknowsfieldmove MOVE_STRENGTH
 	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantStrength
 	setfieldeffectargument 0, VAR_RESULT
 	msgbox Text_WantToStrength, MSGBOX_YESNO
@@ -298,7 +301,7 @@ EventScript_UseWaterfall::
 	lockall
 	checkitem ITEM_WATERFALL_TOOL, 1
     goto_if_eq VAR_RESULT, TRUE, EventScript_UseWaterfallTool
-    checkpartylearnknowsfieldmove ITEM_HM07
+    checkpartylearnknowsfieldmove MOVE_WATERFALL
 	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantWaterfall
 	bufferpartymonnick STR_VAR_1, VAR_RESULT
 	setfieldeffectargument 0, VAR_RESULT

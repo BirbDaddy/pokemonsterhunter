@@ -43,7 +43,7 @@ EventScript_UseWaterfallFieldEffect::
 EventScript_CheckDiveToolAndParty::
     checkitem ITEM_DIVE_TOOL, 1
     goto_if_eq VAR_RESULT, TRUE, EventScript_UseDiveTool
-    checkpartylearnknowsfieldmove ITEM_HM08
+    checkpartylearnknowsfieldmove MOVE_DIVE
     return
 
 EventScript_UseDiveTool::
