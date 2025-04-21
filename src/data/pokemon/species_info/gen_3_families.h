@@ -27,8 +27,8 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .cryId = CRY_TREECKO,
         .natDexNum = NATIONAL_DEX_TREECKO,
         .categoryName = _("Thief Wyvern"),
-        .height = 5,
-        .weight = 50,
+        .height = 12,
+        .weight = 520,
         .description = COMPOUND_STRING(
             "It is characterized by its outer hide\n"
             "and the large spines on its back, which\n"
@@ -311,8 +311,8 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .cryId = CRY_TORCHIC,
         .natDexNum = NATIONAL_DEX_TORCHIC,
         .categoryName = _("Dog Wyvern"),
-        .height = 4,
-        .weight = 25,
+        .height = 10,
+        .weight = 440,
         .description = COMPOUND_STRING(
             "Highly Social, carnivorous bird wyverns\n"
             "that live in large packs.\n"
@@ -635,8 +635,8 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .cryId = CRY_MUDKIP,
         .natDexNum = NATIONAL_DEX_MUDKIP,
         .categoryName = _("Blue Speed Wyvern"),
-        .height = 4,
-        .weight = 76,
+        .height = 11,
+        .weight = 395,
         .description = COMPOUND_STRING(
             "Small Bird Wyverns inhabiting the Jungle.\n"
             "Velociprey are well-known for their yellow\n"
@@ -9016,12 +9016,12 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
 #if P_FAMILY_CASTFORM
     [SPECIES_CASTFORM_NORMAL] =
     {
-        .baseHP        = 70,
-        .baseAttack    = 70,
-        .baseDefense   = 70,
-        .baseSpeed     = 70,
-        .baseSpAttack  = 70,
-        .baseSpDefense = 70,
+        .baseHP        = 100,
+        .baseAttack    = 130,
+        .baseDefense   = 120,
+        .baseSpeed     = 120,
+        .baseSpAttack  = 140,
+        .baseSpDefense = 190,
         .types = MON_TYPES(TYPE_NORMAL),
         .catchRate = 45,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 147 : 145,
@@ -9035,21 +9035,22 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FAIRY, EGG_GROUP_AMORPHOUS),
         .abilities = { ABILITY_FORECAST, ABILITY_NONE, ABILITY_NONE },
         .bodyColor = BODY_COLOR_GRAY,
-        .speciesName = _("Castform"),
+        .speciesName = _("Alatreon"),
         .cryId = CRY_CASTFORM,
         .natDexNum = NATIONAL_DEX_CASTFORM,
-        .categoryName = _("Weather"),
-        .height = 3,
-        .weight = 8,
+        .categoryName = _("Blazing Black Dragon"),
+        .height = 63,
+        .weight = 3360,
         .description = COMPOUND_STRING(
-            "It alters its form depending on the\n"
-            "weather. Changes in the climate such as\n"
-            "the temperature and humidity appear to\n"
-            "affect its cellular structure."),
-        .pokemonScale = 435,
-        .pokemonOffset = -5,
-        .trainerScale = 256,
-        .trainerOffset = 0,
+            //"It alters its form depending on the\n"
+            "Known as a symbol of destruction, people\n"
+            "fear even uttering its name. It's rumored\n"
+            "to control all the elements, and most\n"
+            "records of its existence have been burned."),
+        .pokemonScale = 256,
+        .pokemonOffset = 0,
+        .trainerScale = 650,
+        .trainerOffset = 16,
         .frontPic = gMonFrontPic_CastformNormal,
         .frontPicSize = MON_COORDS_SIZE(24, 32),
         .frontPicYOffset = 17,

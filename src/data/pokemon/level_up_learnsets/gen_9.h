@@ -9046,7 +9046,7 @@ static const struct LevelUpMove sMiloticLevelUpLearnset[] = {
 
 #if P_FAMILY_CASTFORM
 static const struct LevelUpMove sCastformLevelUpLearnset[] = {
-    LEVEL_UP_MOVE( 1, MOVE_TACKLE),
+    LEVEL_UP_MOVE( 1, MOVE_TRI_ATTACK),
     LEVEL_UP_MOVE( 1, MOVE_WATER_GUN),
     LEVEL_UP_MOVE( 1, MOVE_EMBER),
     LEVEL_UP_MOVE( 1, MOVE_POWDER_SNOW),

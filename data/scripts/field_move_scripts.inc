@@ -22,9 +22,9 @@ EventScript_CutTreeCommon:
 	dofieldeffect FLDEFF_USE_CUT_ON_TREE
 	waitstate
 EventScript_CutTreeDown:: @ fallthrough
-	setflag FLAG_SYS_USE_CUT @ qol_field_moves
 	setflag FLAG_SAFE_FOLLOWER_MOVEMENT
 	call_if_eq VAR_0x8004, TRUE, EventScript_FollowerFieldMove
+	setflag FLAG_SYS_USE_CUT @ qol_field_moves
 	applymovement VAR_LAST_TALKED, Movement_CutTreeDown
 	waitmovement 0
 	removeobject VAR_LAST_TALKED
@@ -70,10 +70,13 @@ EventScript_UseRockSmash::
 @ Interact with smashable rock
 EventScript_RockSmash::
 	lockall
-	checkitem ITEM_ROCKSMASH_TOOL,1
+	@ Start qol_field_moves
+	//checkpartymove MOVE_ROCK_SMASH
+    checkitem ITEM_ROCKSMASH_TOOL,1
     goto_if_eq VAR_RESULT, TRUE, EventScript_UseRockSmashTool
     checkpartylearnknowsfieldmove MOVE_ROCK_SMASH
 	goto_if_unset FLAG_BADGE03_GET, EventScript_CantSmashRock
+	@ End qol_field_moves
 	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantSmashRock
 	setfieldeffectargument 0, VAR_RESULT
 	bufferpartymonnick STR_VAR_1, VAR_RESULT
