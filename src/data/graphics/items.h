@@ -93,6 +93,7 @@ const u32 gItemIconPalette_CherishBall[] = INCBIN_U32("graphics/items/icon_palet
 const u32 gItemIcon_Potion[] = INCBIN_U32("graphics/items/icons/potion.4bpp.lz");
 const u32 gItemIconPalette_Potion[] = INCBIN_U32("graphics/items/icon_palettes/potion.gbapal.lz");
 
+const u32 gItemIcon_MegaPotion[] = INCBIN_U32("graphics/items/icons/mega_potion.4bpp.lz");
 const u32 gItemIconPalette_SuperPotion[] = INCBIN_U32("graphics/items/icon_palettes/super_potion.gbapal.lz");
 
 const u32 gItemIconPalette_HyperPotion[] = INCBIN_U32("graphics/items/icon_palettes/hyper_potion.gbapal.lz");

@@ -419,6 +419,7 @@ extern const u32 gItemIconPalette_CherishBall[];
 // Medicine
 extern const u32 gItemIcon_Potion[];
 extern const u32 gItemIconPalette_Potion[];
+extern const u32 gItemIcon_MegaPotion[];
 extern const u32 gItemIconPalette_SuperPotion[];
 extern const u32 gItemIconPalette_HyperPotion[];
 extern const u32 gItemIcon_LargePotion[];
