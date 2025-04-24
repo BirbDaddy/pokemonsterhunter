@@ -8,15 +8,9 @@ const struct CraftingIngredient sPotionIngredients[] =
         .count = 1,
         .isConsumed= TRUE,
     },
-    [1] =
-    {
-        .item = ITEM_FRESH_WATER,
-        .count = 1,
-        .isConsumed= TRUE,
-    },
 };
 
-const struct CraftingIngredient sSuperPotionIngredients[] =
+const struct CraftingIngredient sMegaPotionIngredients[] =
 {
     [0] =
     {
@@ -30,12 +24,6 @@ const struct CraftingIngredient sSuperPotionIngredients[] =
         .count = 1,
         .isConsumed= TRUE,
     },
-    [2] =
-    {
-        .item = ITEM_ABSORB_BULB,
-        .count = 1,
-        .isConsumed= TRUE,
-    },
 };
 
 const struct CraftingRecipe sCraftingRecipes[] =
@@ -44,21 +32,21 @@ const struct CraftingRecipe sCraftingRecipes[] =
     {
         .outputItem = ITEM_POTION,
         .outputQuantity = 1,
-        .ingredientCount = 2,
-        .numDifferentIngredients = 2,
+        .ingredientCount = 1,
+        .numDifferentIngredients = 1,
         .ingredients = sPotionIngredients,
         .recipeName = _("Potion"),
         .category = RECIPE_CATEGORY_MEDICINE,
         .isDiscoverable = TRUE,
     },
-    [RECIPE_SUPER_POTION] =
+    [RECIPE_MEGA_POTION] =
     {
-        .outputItem = ITEM_SUPER_POTION,
+        .outputItem = ITEM_MEGA_POTION,
         .outputQuantity = 1,
-        .ingredientCount = 3,
-        .numDifferentIngredients = 3,
-        .ingredients = sSuperPotionIngredients,
-        .recipeName = _("Super Potion"),
+        .ingredientCount = 2,
+        .numDifferentIngredients = 2,
+        .ingredients = sMegaPotionIngredients,
+        .recipeName = _("Mega Potion"),
         .category = RECIPE_CATEGORY_MEDICINE,
         .isDiscoverable = TRUE,
     }

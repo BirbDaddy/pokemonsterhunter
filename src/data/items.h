@@ -626,9 +626,9 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_Potion,
     },
 
-    [ITEM_SUPER_POTION] =
+    [ITEM_MEGA_POTION] =
     {
-        .name = _("Super Potion"),
+        .name = _("Mega Potion"),
         .price = 700,
         .holdEffectParam = 60,
         .description = COMPOUND_STRING(

@@ -14,7 +14,7 @@ LavaridgeTown_Mart_EventScript_Clerk::
 	.align 2
 LavaridgeTown_Mart_Pokemart:
 	.2byte ITEM_GREAT_BALL
-	.2byte ITEM_SUPER_POTION
+	.2byte ITEM_MEGA_POTION
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_PARALYZE_HEAL
 	.2byte ITEM_AWAKENING

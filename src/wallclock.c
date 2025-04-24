@@ -82,7 +82,7 @@ static const struct WindowTemplate sWindowTemplates[] =
         .tilemapTop = 17,
         .width = 24,
         .height = 2,
-        .paletteNum = 14,
+        .paletteNum = 15,
         .baseBlock = 512
     },
     [WIN_BUTTON_LABEL] = {
@@ -104,7 +104,7 @@ static const struct WindowTemplate sWindowTemplate_ConfirmYesNo =
     .tilemapTop = 9,
     .width = 5,
     .height = 4,
-    .paletteNum = 14,
+    .paletteNum = 15,
     .baseBlock = 572
 };
 
@@ -719,7 +719,7 @@ void CB2_StartWallClock(void)
     gSprites[spriteId].data[1] = 90;
 
     WallClockInit();
-
+    LoadPalette(GetMessageBoxTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->pal, BG_PLTT_ID(15) + 9, PLTT_SIZE_4BPP);
     AddTextPrinterParameterized(WIN_BUTTON_LABEL, FONT_NORMAL, gText_Confirm3, 0, 1, 0, NULL);
     PutWindowTilemap(WIN_BUTTON_LABEL);
     ScheduleBgCopyTilemapToVram(2);

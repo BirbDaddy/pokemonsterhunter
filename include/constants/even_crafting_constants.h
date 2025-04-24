@@ -3,7 +3,7 @@
 
 enum Recipes {
     RECIPE_POTION,
-    RECIPE_SUPER_POTION,
+    RECIPE_MEGA_POTION,
     //  RECIPE_NONE must after all actual recipes
     RECIPE_NONE,
     ERROR_MISSING_INGREDIENTS,

@@ -68,7 +68,7 @@ static const struct WindowTemplate sWindowTemplates[] =
         .tilemapTop = 15,
         .width = 24,
         .height = 4,
-        .paletteNum = 14,
+        .paletteNum = 15,
         .baseBlock = 0x0200
     },
     DUMMY_WIN_TEMPLATE,
@@ -81,7 +81,7 @@ static const struct WindowTemplate sWindowTemplate_ConfirmStarter =
     .tilemapTop = 9,
     .width = 5,
     .height = 4,
-    .paletteNum = 14,
+    .paletteNum = 15,
     .baseBlock = 0x0260
 };
 
@@ -415,6 +415,7 @@ void CB2_ChooseStarter(void)
     FreeAllSpritePalettes();
     ResetAllPicSprites();
 
+    LoadPalette(GetMessageBoxTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->pal, BG_PLTT_ID(15) + 9, PLTT_SIZE_4BPP);
     LoadPalette(GetOverworldTextboxPalettePtr(), BG_PLTT_ID(14), PLTT_SIZE_4BPP);
     LoadPalette(gBirchBagGrass_Pal, BG_PLTT_ID(0), sizeof(gBirchBagGrass_Pal));
     LoadCompressedSpriteSheet(&sSpriteSheet_PokeballSelect[0]);

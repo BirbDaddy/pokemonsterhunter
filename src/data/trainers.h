@@ -1154,7 +1154,7 @@ F_TRAINER_FEMALE |
 #line 531
             TRAINER_ENCOUNTER_MUSIC_AQUA,
 #line 532
-        .items = { ITEM_SUPER_POTION },
+        .items = { ITEM_MEGA_POTION },
 #line 533
         .doubleBattle = FALSE,
 #line 534
@@ -1321,7 +1321,7 @@ F_TRAINER_FEMALE |
 #line 596
             TRAINER_ENCOUNTER_MUSIC_AQUA,
 #line 597
-        .items = { ITEM_SUPER_POTION, ITEM_SUPER_POTION },
+        .items = { ITEM_MEGA_POTION, ITEM_MEGA_POTION },
 #line 598
         .doubleBattle = FALSE,
 #line 599
@@ -3361,7 +3361,7 @@ F_TRAINER_FEMALE |
 #line 1423
             TRAINER_ENCOUNTER_MUSIC_COOL,
 #line 1424
-        .items = { ITEM_SUPER_POTION },
+        .items = { ITEM_MEGA_POTION },
 #line 1425
         .doubleBattle = FALSE,
 #line 1426
@@ -4207,7 +4207,7 @@ F_TRAINER_FEMALE |
 #line 1758
             TRAINER_ENCOUNTER_MUSIC_COOL,
 #line 1759
-        .items = { ITEM_SUPER_POTION },
+        .items = { ITEM_MEGA_POTION },
 #line 1760
         .doubleBattle = FALSE,
 #line 1761
@@ -11943,7 +11943,7 @@ F_TRAINER_FEMALE |
 #line 4830
             TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 4831
-        .items = { ITEM_SUPER_POTION, ITEM_SUPER_POTION },
+        .items = { ITEM_MEGA_POTION, ITEM_MEGA_POTION },
 #line 4832
         .doubleBattle = FALSE,
 #line 4833
@@ -12022,7 +12022,7 @@ F_TRAINER_FEMALE |
 #line 4864
             TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 4865
-        .items = { ITEM_SUPER_POTION, ITEM_SUPER_POTION },
+        .items = { ITEM_MEGA_POTION, ITEM_MEGA_POTION },
 #line 4866
         .doubleBattle = FALSE,
 #line 4867
@@ -27596,7 +27596,7 @@ F_TRAINER_FEMALE |
 #line 11008
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
 #line 11009
-        .items = { ITEM_SUPER_POTION, ITEM_SUPER_POTION },
+        .items = { ITEM_MEGA_POTION, ITEM_MEGA_POTION },
 #line 11010
         .doubleBattle = FALSE,
 #line 11011
@@ -27652,7 +27652,7 @@ F_TRAINER_FEMALE |
 #line 11030
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
 #line 11031
-        .items = { ITEM_SUPER_POTION, ITEM_SUPER_POTION },
+        .items = { ITEM_MEGA_POTION, ITEM_MEGA_POTION },
 #line 11032
         .doubleBattle = FALSE,
 #line 11033

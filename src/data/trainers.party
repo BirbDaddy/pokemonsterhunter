@@ -529,7 +529,7 @@ Class: Aqua Admin
 Pic: Aqua Admin M
 Gender: Male
 Music: Aqua
-Items: Super Potion
+Items: Mega Potion
 Double Battle: No
 AI: Basic Trainer
 
@@ -594,7 +594,7 @@ Class: Aqua Leader
 Pic: Aqua Leader Archie
 Gender: Male
 Music: Aqua
-Items: Super Potion / Super Potion
+Items: Mega Potion / Mega Potion
 Double Battle: No
 AI: Basic Trainer
 
@@ -1421,7 +1421,7 @@ Class: Cooltrainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
-Items: Super Potion
+Items: Mega Potion
 Double Battle: No
 AI: Basic Trainer
 
@@ -1756,7 +1756,7 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Super Potion
+Items: Mega Potion
 Double Battle: No
 AI: Basic Trainer
 
@@ -4828,7 +4828,7 @@ Class: Leader
 Pic: Leader Brawly
 Gender: Male
 Music: Male
-Items: Super Potion / Super Potion
+Items: Mega Potion / Mega Potion
 Double Battle: No
 AI: Basic Trainer
 
@@ -4862,7 +4862,7 @@ Class: Leader
 Pic: Leader Wattson
 Gender: Male
 Music: Male
-Items: Super Potion / Super Potion
+Items: Mega Potion / Mega Potion
 Double Battle: No
 AI: Basic Trainer
 
@@ -11006,7 +11006,7 @@ Class: Magma Leader
 Pic: Magma Leader Maxie
 Gender: Male
 Music: Magma
-Items: Super Potion / Super Potion
+Items: Mega Potion / Mega Potion
 Double Battle: No
 AI: Basic Trainer
 
@@ -11028,7 +11028,7 @@ Class: Magma Leader
 Pic: Magma Leader Maxie
 Gender: Male
 Music: Magma
-Items: Super Potion / Super Potion
+Items: Mega Potion / Mega Potion
 Double Battle: No
 AI: Basic Trainer
 
