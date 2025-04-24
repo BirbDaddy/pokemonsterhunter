@@ -766,17 +766,7 @@ static void Task_DisplayMainMenu(u8 taskId)
         SetGpuReg(REG_OFFSET_BLDALPHA, 0);
         SetGpuReg(REG_OFFSET_BLDY, 7);
 
-        palette = RGB_BLACK;
-        LoadPalette(&palette, BG_PLTT_ID(15) + 14, PLTT_SIZEOF(1));
-
-        palette = RGB_PARCHMENT;
-        LoadPalette(&palette, BG_PLTT_ID(15) + 10, PLTT_SIZEOF(1));
-
-        palette = RGB(12, 12, 12);
-        LoadPalette(&palette, BG_PLTT_ID(15) + 11, PLTT_SIZEOF(1));
-
-        palette = RGB(26, 26, 25);
-        LoadPalette(&palette, BG_PLTT_ID(15) + 12, PLTT_SIZEOF(1));
+        LoadPalette(GetMessageBoxTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->pal, BG_PLTT_ID(15) + 9, PLTT_SIZE_4BPP);
 
         // Note: If there is no save file, the save block is zeroed out,
         // so the default gender is MALE.

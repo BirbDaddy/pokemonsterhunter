@@ -88,7 +88,7 @@ static const struct TilesPal sMessageBox[WINDOW_FRAMES_COUNT] =
     {sMessageBox10_Gfx, sMessageBox10_Pal}
 };
 
-static const struct TilesPal *gMessageBoxTilesPal(u8 id)
+const struct TilesPal *GetMessageBoxTilesPal(u8 id)
 {
     if (id >= WINDOW_FRAMES_COUNT)
         return &sMessageBox[0];
@@ -111,7 +111,7 @@ const struct TilesPal *GetWindowFrameTilesPal(u8 id)
 void LoadMessageBoxGfx(u8 windowId, u16 destOffset, u8 palOffset)
 {
     LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), sMessageBox[gSaveBlock2Ptr->optionsWindowFrameType].tiles, 0x1C0, destOffset);
-    LoadPalette(gMessageBoxTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->pal, palOffset, PLTT_SIZE_4BPP);
+    LoadPalette(GetMessageBoxTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->pal, palOffset, PLTT_SIZE_4BPP);
 }
 
 void LoadSignBoxGfx(u8 windowId, u16 destOffset, u8 palOffset)
