@@ -604,7 +604,7 @@ static void Task_EvenCraftingUiMainInput(u8 taskId)
                 break;
             default:
                 EvenCraftingUi_CraftItem(result);
-                PlaySE(ECU_ADD_ITEM_SOUND);
+                PlayFanfare(MUS_OBTAIN_ITEM);
                 EvenCraftingUi_InitScrollList();
                 EvenCraftingUi_PrintDynamicUiButtonHints();
             }

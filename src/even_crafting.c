@@ -2,6 +2,7 @@
 #include "item.h"
 #include "main.h"
 #include "malloc.h"
+#include "sound.h"
 
 #include "global.h"
 
