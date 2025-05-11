@@ -44,6 +44,7 @@
 #include "play_time.h"
 #include "qol_field_moves.h" // qol_field_moves
 #include "random.h"
+#include "randomizer.h"
 #include "roamer.h"
 #include "rotating_gate.h"
 #include "rtc.h"
@@ -1810,6 +1811,10 @@ void CB2_ContinueSavedGame(void)
         LoadTrainerHillFloorObjectEventScripts();
     else
         LoadSaveblockObjEventScripts();
+
+    #if (RANDOMIZER_AVAILABLE == TRUE) && (RANDOMIZER_DYNAMIC_SPECIES == TRUE)
+        PreloadRandomizationTables();
+    #endif
 
     UnfreezeObjectEvents();
     DoTimeBasedEvents();

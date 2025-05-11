@@ -10,6 +10,7 @@
 #include "palette.h"
 #include "pokedex.h"
 #include "pokemon.h"
+#include "randomizer.h"
 #include "scanline_effect.h"
 #include "sound.h"
 #include "sprite.h"
@@ -350,9 +351,16 @@ static const struct SpriteTemplate sSpriteTemplate_StarterCircle =
 // .text
 u16 GetStarterPokemon(u16 chosenStarterId)
 {
+    u16 species;
     if (chosenStarterId > STARTER_MON_COUNT)
         chosenStarterId = 0;
-    return sStarterMon[chosenStarterId];
+    #if RANDOMIZER_AVAILABLE == TRUE
+        species = RandomizeStarterAndGiftMon(chosenStarterId, sStarterMon);
+    #else
+        species = sStarterMon[chosenStarterId];
+    #endif
+
+    return species;
 }
 
 static void VblankCB_StarterChoose(void)

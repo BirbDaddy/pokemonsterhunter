@@ -3605,7 +3605,7 @@ static void PrintMonOTID(void)
 static void PrintMonAbilityName(void)
 {
     u8 windowId = AddWindowFromTemplateList(sPageInfoTemplate, PSS_DATA_WINDOW_INFO_ABILITY);
-    u16 ability = GetAbilityBySpecies(sMonSummaryScreen->summary.species, sMonSummaryScreen->summary.abilityNum);
+    u16 ability = GetAbilityBySpecies(sMonSummaryScreen->summary.species, sMonSummaryScreen->summary.abilityNum, FALSE);
     u16 isHiddenAbility = sMonSummaryScreen->summary.abilityNum == 2;
     if(P_SUMMARY_SCREEN_EXPAND_ABILITY_DESCRIPTION)
     {
@@ -3626,7 +3626,7 @@ static void PrintMonAbilityName(void)
 static void PrintMonAbilityDescription(void)
 {
     u8 windowId = AddWindowFromTemplateList(sPageInfoTemplate, PSS_DATA_WINDOW_INFO_ABILITY);
-    u16 ability = GetAbilityBySpecies(sMonSummaryScreen->summary.species, sMonSummaryScreen->summary.abilityNum);
+    u16 ability = GetAbilityBySpecies(sMonSummaryScreen->summary.species, sMonSummaryScreen->summary.abilityNum, FALSE);
 
     if(P_SUMMARY_SCREEN_EXPAND_ABILITY_DESCRIPTION == TRUE)
     {

@@ -49,6 +49,7 @@
 #include "constants/items.h"
 #include "difficulty.h"
 #include "tx_registered_items_menu.h"
+#include "randomizer.h"
 
 extern const u8 EventScript_ResetAllMapFlags[];
 
@@ -215,6 +216,9 @@ void NewGameInitData(void)
     ResetItemFlags();
     ResetDexNav();
     QuestMenu_ResetMenuSaveData();
+    #if (RANDOMIZER_AVAILABLE == TRUE) && (RANDOMIZER_DYNAMIC_SPECIES == TRUE)
+        PreloadRandomizationTables();
+    #endif
 }
 
 static void ResetMiniGamesRecords(void)
