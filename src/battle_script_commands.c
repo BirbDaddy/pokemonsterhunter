@@ -1152,46 +1152,21 @@ bool32 ProteanTryChangeType(u32 battler, u32 ability, u32 move, u32 moveType)
 
 bool32 ElementalShiftChangeWeather(u32 battler, u32 ability, u32 move, u32 moveType)
 {
-    gBattlerAbility = battler;
-    if (ability == ABILITY_FORECAST)
+    if (ability == ABILITY_FORECAST && !(gBattleWeather & B_WEATHER_SUN_PRIMAL || gBattleWeather & B_WEATHER_RAIN_PRIMAL))
     {
-        if (gBattleWeather & B_WEATHER_PRIMAL_ANY/* && WEATHER_HAS_EFFECT*/)
+        if (moveType == TYPE_FIRE && !(gBattleWeather & B_WEATHER_SUN))
         {
-            gSpecialStatuses[battler].switchInAbilityDone = TRUE;
-            BattleScriptPushCursorAndCallback(BattleScript_BlockedByPrimalWeatherEnd3);
-            return TRUE;
+            gBattleWeather = B_WEATHER_SUN_NORMAL;
+            gBattleScripting.animArg1 = B_ANIM_SUN_CONTINUES;
+            //SET_BATTLER_TYPE(battler, moveType);
         }
-        else
+        if (moveType == TYPE_ICE && !(gBattleWeather & B_WEATHER_HAIL))
         {
-            if (moveType == TYPE_FIRE)
-            {
-                if (TryChangeBattleWeather(battler, B_WEATHER_SUN, TRUE))
-                {
-                    BattleScriptPushCursorAndCallback(BattleScript_DroughtActivates);
-                    return TRUE;
-                }
-            }
-            if (moveType == TYPE_WATER)
-            {
-                if (TryChangeBattleWeather(battler, B_WEATHER_RAIN, TRUE))
-                {
-                    BattleScriptPushCursorAndCallback(BattleScript_DrizzleActivates);
-                    return TRUE;
-                }
-            }
-            if (moveType == TYPE_ICE)
-            {
-                if (TryChangeBattleWeather(battler, B_WEATHER_HAIL, TRUE))
-                {
-                    BattleScriptPushCursorAndCallback(BattleScript_SnowWarningActivatesHail);
-                    return TRUE;
-                }
-            }
+            gBattleWeather = B_WEATHER_HAIL;
+            gBattleScripting.animArg1 = B_ANIM_SUN_CONTINUES;
+            //SET_BATTLER_TYPE(battler, moveType);
         }
-    }
-    else
-    {
-        return FALSE;
+        return TRUE;
     }
     return FALSE;
 }
@@ -8373,7 +8348,7 @@ static bool32 DoSwitchInEffectsForBattler(u32 battler)
                 if (AbilityBattleEffects(ABILITYEFFECT_ON_SWITCHIN, i, 0, 0, 0))
                     return TRUE;
                 break;
-            case ABILITY_FORECAST:
+            //case ABILITY_FORECAST:
             case ABILITY_FLOWER_GIFT:
             case ABILITY_PROTOSYNTHESIS:
                 if (AbilityBattleEffects(ABILITYEFFECT_ON_WEATHER, i, 0, 0, 0))

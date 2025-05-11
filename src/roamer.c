@@ -101,13 +101,13 @@ static void CreateInitialRoamerMon(u8 index, u16 species, u8 level)
 {
     ClearRoamerLocationHistory(index);
     CreateMon(&gEnemyParty[0], species, level, USE_RANDOM_IVS, FALSE, 0, OT_ID_PLAYER_ID, 0);
-    /*ROAMER(index)->ivs = GetMonData(&gEnemyParty[0], MON_DATA_IVS);
-    ROAMER(index)->personality = GetMonData(&gEnemyParty[0], MON_DATA_PERSONALITY);*/
+    ROAMER(index)->ivs = GetMonData(&gEnemyParty[0], MON_DATA_IVS);
+    ROAMER(index)->personality = GetMonData(&gEnemyParty[0], MON_DATA_PERSONALITY);
     ROAMER(index)->species = species;
     ROAMER(index)->level = level;
     ROAMER(index)->statusA = 0;
     ROAMER(index)->statusB = 0;
-    //ROAMER(index)->hp = GetMonData(&gEnemyParty[0], MON_DATA_MAX_HP);
+    ROAMER(index)->hp = GetMonData(&gEnemyParty[0], MON_DATA_MAX_HP);
     ROAMER(index)->cool = GetMonData(&gEnemyParty[0], MON_DATA_COOL);
     ROAMER(index)->beauty = GetMonData(&gEnemyParty[0], MON_DATA_BEAUTY);
     ROAMER(index)->cute = GetMonData(&gEnemyParty[0], MON_DATA_CUTE);

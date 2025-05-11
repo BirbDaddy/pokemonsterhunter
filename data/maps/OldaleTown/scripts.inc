@@ -3,8 +3,8 @@
 .set LOCALID_RIVAL, 4
 
 OldaleTown_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, OldaleTown_OnTransition
-	.byte 0
+    map_script MAP_SCRIPT_ON_TRANSITION, OldaleTown_OnTransition
+    .byte 0
 
 OldaleTown_OnTransition:
 	call Common_EventScript_SetupRivalGfxId

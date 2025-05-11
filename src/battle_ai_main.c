@@ -51,7 +51,7 @@ static s32 AI_Risky(u32 battlerAtk, u32 battlerDef, u32 move, s32 score);
 static s32 AI_TryTo2HKO(u32 battlerAtk, u32 battlerDef, u32 move, s32 score);
 static s32 AI_PreferBatonPass(u32 battlerAtk, u32 battlerDef, u32 move, s32 score);
 static s32 AI_HPAware(u32 battlerAtk, u32 battlerDef, u32 move, s32 score);
-static s32 AI_Roaming(u32 battlerAtk, u32 battlerDef, u32 move, s32 score);
+//static s32 AI_Roaming(u32 battlerAtk, u32 battlerDef, u32 move, s32 score);
 static s32 AI_Safari(u32 battlerAtk, u32 battlerDef, u32 move, s32 score);
 static s32 AI_FirstBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score);
 static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score);
@@ -90,9 +90,9 @@ static s32 (*const sBattleAiFuncTable[])(u32, u32, u32, s32) =
     [26] = NULL,                     // Unused
     [27] = NULL,                     // Unused
     [28] = AI_DynamicFunc,          // AI_FLAG_DYNAMIC_FUNC
-    [29] = AI_Roaming,              // AI_FLAG_ROAMING
-    [30] = AI_Safari,               // AI_FLAG_SAFARI
-    [31] = AI_FirstBattle,          // AI_FLAG_FIRST_BATTLE
+//    [29] = AI_Roaming,              // AI_FLAG_ROAMING
+    [29] = AI_Safari,               // AI_FLAG_SAFARI
+    [30] = AI_FirstBattle,          // AI_FLAG_FIRST_BATTLE
 };
 
 // Functions
@@ -162,8 +162,8 @@ static u32 GetAiFlags(u16 trainerId)
             flags = GetAiScriptsInRecordedBattle();
         else if (gBattleTypeFlags & BATTLE_TYPE_SAFARI)
             flags = AI_FLAG_SAFARI;
-        else if (gBattleTypeFlags & BATTLE_TYPE_ROAMER)
-            flags = AI_FLAG_ROAMING;
+/*        else if (gBattleTypeFlags & BATTLE_TYPE_ROAMER)
+            flags = AI_FLAG_ROAMING;*/
         else if (gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE)
             flags = AI_FLAG_FIRST_BATTLE;
         else if (gBattleTypeFlags & BATTLE_TYPE_FACTORY)
@@ -5587,14 +5587,14 @@ static void AI_Watch(void)
 }
 
 // Roaming pokemon logic
-static s32 AI_Roaming(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
+/*static s32 AI_Roaming(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
 {
     if (IsBattlerTrapped(battlerAtk, FALSE))
         return score;
 
     AI_Flee();
     return score;
-}
+}*/
 
 // Safari pokemon logic
 static s32 AI_Safari(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)

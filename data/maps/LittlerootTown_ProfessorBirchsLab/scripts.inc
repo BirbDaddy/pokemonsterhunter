@@ -646,11 +646,12 @@ LittlerootTown_ProfessorBirchsLab_EventScript_BrendanTakeBreakFromFieldwork::
 	return
 
 LittlerootTown_ProfessorBirchsLab_EventScript_PC::
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_PCUsedForResearch, MSGBOX_SIGN
+	fadescreen FADE_TO_BLACK
+	openevencrafting ECU_DEFAULT
 	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_Bookshelf::
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_CrammedWithBooksOnPokemon, MSGBOX_SIGN
+	openquestmenu
 	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_Book::

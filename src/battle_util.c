@@ -3649,6 +3649,24 @@ static void CancellerProtean(u32 *effect)
     }
 }
 
+static void CancellerElementalShift(u32 *effect)
+{
+    u32 moveType = GetBattleMoveType(gCurrentMove);
+    if (ElementalShiftChangeWeather(gBattlerAttacker, GetBattlerAbility(gBattlerAttacker), gCurrentMove, moveType))
+    {
+        PREPARE_TYPE_BUFFER(gBattleTextBuff1, moveType);
+        gBattlerAbility = gBattlerAttacker;
+        BattleScriptPushCursor();
+        PrepareStringBattle(STRINGID_EMPTYSTRING3, gBattlerAttacker);
+        gBattleCommunication[MSG_DISPLAY] = 1;
+        if (moveType == TYPE_FIRE)
+            gBattlescriptCurrInstr = BattleScript_DroughtActivates;
+        if (moveType == TYPE_ICE)
+            gBattlescriptCurrInstr = BattleScript_SnowWarningActivatesHail;
+        *effect = 1;
+    }
+}
+
 static void CancellerPsychicTerrain(u32 *effect)
 {
     if (gFieldStatuses & STATUS_FIELD_PSYCHIC_TERRAIN
@@ -3850,6 +3868,7 @@ static const MoveSuccessOrderCancellers sMoveSuccessOrderCancellers[] =
     [CANCELLER_WEATHER_PRIMAL] = CancellerWeatherPrimal,
     [CANCELLER_DYNAMAX_BLOCKED] = CancellerDynamaxBlocked,
     [CANCELLER_POWDER_STATUS] = CancellerPowderStatus,
+    [CANCELLER_ELEMENTAL_SHIFT] = CancellerElementalShift,
     [CANCELLER_PROTEAN] = CancellerProtean,
     [CANCELLER_PSYCHIC_TERRAIN] = CancellerPsychicTerrain,
     [CANCELLER_EXPLODING_DAMP] = CancellerExplodingDamp,
