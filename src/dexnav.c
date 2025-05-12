@@ -1576,7 +1576,16 @@ static u8 GetEncounterLevelFromMapData(u16 species, u8 environment)
 
         for (i = 0; i < HIDDEN_WILD_COUNT; i++)
         {
-            if (hiddenMonsInfo->wildPokemon[i].species == species)
+            #if RANDOMIZER_AVAILABLE == TRUE
+                speciesToCheck = RandomizeWildEncounter(
+                    waterMonsInfo->wildPokemon[i].species,
+                    gWildMonHeaders[headerId].mapNum,
+                    gWildMonHeaders[headerId].mapGroup,
+                    WILD_AREA_WATER, i);
+            #else
+                speciesToCheck = waterMonsInfo->wildPokemon[i].species;
+            #endif
+            if (speciesToCheck == species)
             {
                 min = (min < hiddenMonsInfo->wildPokemon[i].minLevel) ? min : hiddenMonsInfo->wildPokemon[i].minLevel;
                 max = (max > hiddenMonsInfo->wildPokemon[i].maxLevel) ? max : hiddenMonsInfo->wildPokemon[i].maxLevel;

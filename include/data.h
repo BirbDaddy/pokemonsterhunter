@@ -99,7 +99,7 @@ struct Trainer
     /*0x22*/ u8 poolRuleIndex;
     /*0x23*/ u8 poolPickIndex;
     /*0x24*/ u8 poolPruneIndex;
-    /*0x25*/ u8 isBossTrainer:1;
+    /*0x25*/ bool8 isBossTrainer:1;
 };
 
 struct TrainerClass
@@ -303,7 +303,7 @@ static inline const bool32 IsBossTrainerBattle(u16 trainerId)
 {
     u32 sanitizedTrainerId = SanitizeTrainerId(trainerId);
     enum DifficultyLevel difficulty = GetTrainerDifficultyLevel(sanitizedTrainerId);
-
+    
     return gTrainers[difficulty][sanitizedTrainerId].isBossTrainer;
 }
 

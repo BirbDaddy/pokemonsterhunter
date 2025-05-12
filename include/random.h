@@ -28,6 +28,8 @@ struct Sfc32State {
     u32 ctr;
 };
 
+// A variant of SFC32 that lets you change the stream.
+// stream can be any odd number.
 static inline u32 _SFC32_Next_Stream(struct Sfc32State *state, const u8 stream)
 {
     const u32 result = state->a + state->b + state->ctr;

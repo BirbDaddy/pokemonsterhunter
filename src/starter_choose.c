@@ -24,6 +24,7 @@
 #include "window.h"
 #include "constants/songs.h"
 #include "constants/rgb.h"
+#include "randomizer.h"
 
 #define STARTER_MON_COUNT   3
 

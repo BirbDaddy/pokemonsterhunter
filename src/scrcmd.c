@@ -59,6 +59,7 @@
 #include "malloc.h"
 #include "quests.h"
 #include "constants/event_objects.h"
+#include "randomizer.h"
 
 typedef u16 (*SpecialFunc)(void);
 typedef void (*NativeFunc)(struct ScriptContext *ctx);
@@ -2473,7 +2474,6 @@ bool8 ScrCmd_setwildbattle(struct ScriptContext *ctx)
     u16 item2 = ScriptReadHalfword(ctx);
 
     Script_RequestEffects(SCREFF_V1);
-
     #if RANDOMIZER_AVAILABLE == TRUE
         u8 mapNum = gSaveBlock1Ptr->location.mapNum;
         u8 mapGroup = gSaveBlock1Ptr->location.mapGroup;
