@@ -59,7 +59,6 @@
 #include "malloc.h"
 #include "quests.h"
 #include "constants/event_objects.h"
-#include "randomizer.h"
 
 typedef u16 (*SpecialFunc)(void);
 typedef void (*NativeFunc)(struct ScriptContext *ctx);

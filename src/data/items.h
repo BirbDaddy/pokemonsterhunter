@@ -5621,12 +5621,12 @@ const struct Item gItemsInfo[] =
 
     [ITEM_BLAZIKENITE] =
     {
-        .name = _("Blazikenite"),
+        .name = _("Fatalisite"),
         .price = 0,
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
         .description = COMPOUND_STRING(
             "This stone enables\n"
-            "Blaziken to Mega\n"
+            "Fatalis to Mega\n"
             "Evolve in battle."),
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_BAG_MENU,

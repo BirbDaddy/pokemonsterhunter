@@ -478,17 +478,17 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
         .abilities = { ABILITY_BLAZE, ABILITY_NONE, ABILITY_SPEED_BOOST },
         .bodyColor = BODY_COLOR_RED,
-        .speciesName = _("Blaziken"),
+        .speciesName = _("Fatalis"),
         .cryId = CRY_BLAZIKEN,
         .natDexNum = NATIONAL_DEX_BLAZIKEN,
-        .categoryName = _("Blaze"),
+        .categoryName = _("Black Dragon"),
         .height = 19,
         .weight = 520,
         .description = COMPOUND_STRING(
-            "It learns martial arts that use punches\n"
-            "and kicks. Every several years, its old\n"
-            "feathers burn off, and new, supple\n"
-            "feathers grow back in their place."),
+            "A legendary black dragon known only as\n"
+            "Fatalis. It is rumored to have destroyed a\n"
+            "kingdom in a single night, and has taken\n"
+            "its castle for a roost."),
         .pokemonScale = 256,
         .pokemonOffset = 0,
         .trainerScale = 301,
@@ -562,17 +562,17 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
         .abilities = { ABILITY_SPEED_BOOST, ABILITY_SPEED_BOOST, ABILITY_SPEED_BOOST },
         .bodyColor = BODY_COLOR_RED,
-        .speciesName = _("Blaziken"),
+        .speciesName = _("Fatalis"),
         .cryId = CRY_BLAZIKEN_MEGA,
         .natDexNum = NATIONAL_DEX_BLAZIKEN,
-        .categoryName = _("Blaze"),
+        .categoryName = _("Black Dragon"),
         .height = 19,
         .weight = 520,
         .description = COMPOUND_STRING(
-            "As it unleashes a flurry of savage kicks,\n"
-            "its legs can begin to burn from the\n"
-            "friction of the surrounding atmosphere.\n"
-            "They're always a source of pride to it."),
+            "A legendary black dragon known only as\n"
+            "Fatalis. It is rumored to have destroyed\n"
+            "a kingdom in a single night, and has taken\n"
+            "its castle for a roost."),
         .pokemonScale = 256,
         .pokemonOffset = 0,
         .trainerScale = 301,

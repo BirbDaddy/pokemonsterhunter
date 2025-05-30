@@ -24,7 +24,6 @@
 #include "constants/items.h"
 #include "constants/layouts.h"
 #include "constants/weather.h"
-#include "randomizer.h"
 
 extern const u8 EventScript_SprayWoreOff[];
 

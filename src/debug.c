@@ -68,7 +68,6 @@
 #include "constants/species.h"
 #include "constants/weather.h"
 #include "save.h"
-#include "randomizer.h"
 
 // *******************************
 enum DebugMenu
@@ -588,6 +587,7 @@ static const struct ListMenuItem sDebugMenu_Items_Utilities[] =
     [DEBUG_UTIL_MENU_ITEM_EXPANSION_VER]   = {COMPOUND_STRING("Expansion Version"),                            DEBUG_UTIL_MENU_ITEM_EXPANSION_VER},
     [DEBUG_UTIL_MENU_ITEM_BERRY_FUNCTIONS] = {COMPOUND_STRING("Berry Functions…{CLEAR_TO 110}{RIGHT_ARROW}"),  DEBUG_UTIL_MENU_ITEM_BERRY_FUNCTIONS},
     [DEBUG_UTIL_MENU_ITEM_EWRAM_COUNTERS]  = {COMPOUND_STRING("EWRAM Counters…{CLEAR_TO 110}{RIGHT_ARROW}"),   DEBUG_UTIL_MENU_ITEM_EWRAM_COUNTERS},
+    [DEBUG_UTIL_MENU_ITEM_RANDOMIZER]      = {COMPOUND_STRING("Randomizer"),                                    DEBUG_UTIL_MENU_ITEM_RANDOMIZER},
     [DEBUG_UTIL_MENU_ITEM_STEVEN_MULTI]    = {COMPOUND_STRING("Steven Multi"),                                 DEBUG_UTIL_MENU_ITEM_STEVEN_MULTI},
 };
 

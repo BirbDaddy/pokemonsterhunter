@@ -24,7 +24,6 @@
 #include "window.h"
 #include "constants/songs.h"
 #include "constants/rgb.h"
-#include "randomizer.h"
 
 #define STARTER_MON_COUNT   3
 
@@ -115,7 +114,7 @@ static const u8 sStarterLabelCoords[STARTER_MON_COUNT][2] =
 static const u16 sStarterMon[STARTER_MON_COUNT] =
 {
     SPECIES_TREECKO,
-    SPECIES_CASTFORM,
+    SPECIES_BLAZIKEN,
     SPECIES_MUDKIP,
 };
 
